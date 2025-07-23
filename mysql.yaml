@@ -1,6 +1,8 @@
 - name: configur mysql server
   hosts: mysql
   become: yes
+  vars:
+    mysql_root_password: ExpenseApp@1
   tasks:
   - name: Install mysql libraries
     ansible.builtin.pip: # ansible pip module
@@ -24,7 +26,7 @@
   - name: connect to mysql server
     community.mysql.mysql_info: # ansible mysql module- mysql_info module
       login_user: root
-      login_password: ExpenseApp@1
+      login_password: "{{ mysql_root_password }}"
       login_host: mysql.poojari.store
     register: mysql_info
     ignore_errors: true  # "ansible error handling" . In this we get error and we are telling that ignor it.
@@ -34,5 +36,5 @@
       msg: "mysql information: {{ mysql_info }}" 
 
   - name: setup the login_password
-    ansible.builtin.command: mysql_secure_installation --set-root-pass ExpenseApp@1
+    ansible.builtin.command: mysql_secure_installation --set-root-pass "{{ mysql_root_password }}"
     when: mysql_info.failed is true    
