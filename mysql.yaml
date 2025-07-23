@@ -24,6 +24,7 @@
       login_password: ExpenseApp@1
       login_host: mysql.poojari.store
     register: mysql_info
+    ignore_errors: true  # "ansible error handling" . In this we get error and we are telling that ignor it.
 
   - name: print the output
     ansible.builtin.debug:
