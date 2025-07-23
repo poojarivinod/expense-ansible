@@ -20,10 +20,10 @@
     ansible.builtin.user: # create user ansible
       name: expense                            
 
-  # - name: create app directory
-  #   ansible.builtin.file: # create directory ansible
-  #     path: /app
-  #     state: directory
+  - name: create app directory
+    ansible.builtin.file: # create directory ansible
+      path: /app
+      state: directory
 
   # - name: download backend code
   #   ansible.builtin.get_url: #download file ansible
