@@ -13,8 +13,8 @@
       name: "{{ item }}"
       state: present
     loop:
-    - nodejs -y
-    - mysql -y
+    - nodejs 
+    - mysql 
 
   - name: create expense user 
     ansible.builtin.user: # create user ansible
