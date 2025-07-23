@@ -1,0 +1,37 @@
+- name: configur backend server
+  hosts: backend
+  become: yes
+  tasks:
+  - name: disable current nodejs
+    ansible.builtin.command: dnf module disable nodejs -y
+  
+  # - name: enable nodejs 20
+  #   ansible.builtin.command: dnf module enable nodejs:20 -y
+
+  # - name: install nodejs and mysql
+  #   ansible.builtin.package:
+  #     name: "{{ item }}"
+  #     state: installed
+  #   loop:
+  #   - nodejs -y
+  #   - mysql -y
+
+  # - name: create expense user 
+  #   ansible.builtin.user: # create user ansible
+  #     name: expense                            
+
+  # - name: create app directory
+  #   ansible.builtin.file: # create directory ansible
+  #     path: /app
+  #     state: directory
+
+  # - name: download backend code
+  #   ansible.builtin.get_url: #download file ansible
+  #   url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+  #   dest: /tmp/backend.zip
+
+  # - name: unzip backend code
+  #   ansible.builtin.unarchive: #unzip file ansible
+  #   src: /tmp/backend.zip
+  #   dest: /app
+  #   remote_src: yes # if backend code is not their in ansible and it is their remote machine(other location then ansible)
