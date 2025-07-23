@@ -17,7 +17,7 @@
     community.mysql.mysql_info: # ansible mysql module- mysql_info module
       login_user: root
       login_password: ExpenseApp@1
-      login_host: mysql.vinod.store
+      login_host: mysql.poojari.store
     register: mysql info
 
   - name: print the output
