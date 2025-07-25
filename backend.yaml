@@ -46,11 +46,18 @@
       dest: /etc/systemd/system/backend.service
 # we are not giving remote_src: yes, because backend.service is their in ansible 
   
+  - name: install mysql libraries
+    ansible.install.package:
+      name: "{{ item }}"
+      executable: pip3.9
+    loop:
+    -  PyMySQL
+
   - name: import mysql data
-    community.mysql.mysql_db: #ansible mysql module-mysql_db module
+    community.mysql.mysql_db: #ansible mysql module, mysql_db module
       state: import
       name: all 
-      login_user: root
+      login_user: root # This three not show in ansible module, we have to add it,
       login_password: ExpenseApp@1
       login_host: mysql.poojari.store
       target: /app/schema/backend.sql
