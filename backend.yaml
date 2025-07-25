@@ -52,6 +52,7 @@
       executable: pip3.9 # To know present version of ansible- "ansible --version"
     loop:
     - PyMySQL
+    - cryptography
 
   - name: import mysql data
     community.mysql.mysql_db: #ansible mysql module, mysql_db module
