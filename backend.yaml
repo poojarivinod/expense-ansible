@@ -45,3 +45,12 @@
       src: backend.service
       dest: /etc/systemd/system/backend.service
 # we are not giving remote_src: yes, because backend.service is their in ansible 
+  
+  - name: import mysql data
+    community.mysql.mysql_db: #ansible mysql module-mysql_db module
+      state: import
+      name: all 
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
+      login_host: mysql.poojari.store
+      target: /app/schema/backend.sql
