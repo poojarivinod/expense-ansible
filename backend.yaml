@@ -51,7 +51,7 @@
       name: "{{ item }}"
       executable: pip3.9
     loop:
-    -  PyMySQL
+    - PyMySQL
 
   - name: import mysql data
     community.mysql.mysql_db: #ansible mysql module, mysql_db module
