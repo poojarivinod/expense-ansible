@@ -47,9 +47,9 @@
 # we are not giving remote_src: yes, because backend.service is their in ansible 
   
   - name: install mysql libraries
-    ansible.install.pip:
+    ansible.builtin.pip:  # ansible pip module
       name: "{{ item }}"
-      executable: pip3.9
+      executable: pip3.9 # To know present version of ansible- "ansible --version"
     loop:
     - PyMySQL
 
