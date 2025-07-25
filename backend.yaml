@@ -47,7 +47,7 @@
 # we are not giving remote_src: yes, because backend.service is their in ansible 
   
   - name: install mysql libraries
-    ansible.install.package:
+    ansible.install.pip:
       name: "{{ item }}"
       executable: pip3.9
     loop:
